@@ -10,10 +10,10 @@ public interface UserMapper {
 	
 	UserEntity getOne(Long id);
 
-	void insert(UserEntity user);
+	int insert(UserEntity user);
 
-	void update(UserEntity user);
+	int update(UserEntity user);
 
-	void delete(Long id);
+	int delete(Long id);
 
 }
