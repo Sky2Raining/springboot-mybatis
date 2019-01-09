@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="application.properties"/>
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.freetmp.mbg.plugin.upsert.MySqlUpsertPlugin"/>
+        <plugin type="com.trytotry.mybatis.generator.plugin.OverIsMergeablePlugin"/>
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${spring.datasource.driverClassName}"
+                        connectionURL="${spring.datasource.url}"
+                        userId="${spring.datasource.username}"
+                        password="${spring.datasource.password}">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.skyraining.entity.gen" targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="mybatis.mapper.gen" targetProject="src/main/resources"/>
+
+        <javaClientGenerator targetPackage="com.skyraining.mapper.gen" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+
+        <table tableName="form%"/>
+
+    </context>
+</generatorConfiguration>
